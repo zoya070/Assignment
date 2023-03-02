@@ -1,0 +1,43 @@
+ o create table tblParents
+    -> (
+    ->  parent_id INT PRIMARY KEY AUTO_INCREMENT,
+    -> parent_name VARCHAR(50),
+    -> city VARCHAR(50),
+    -> age INT,
+    -> annual_income INT,
+    -> occupation VARCHAR(50),
+    -> email VARCHAR(50)
+    -> );
+o  create table student
+    -> (
+    -> student_id INT PRIMARY KEY,
+    -> student_name VARCHAR(50),
+    -> maths_marks INT,
+    ->  science_marks INT,
+    -> parent_id INT,
+    -> FOREIGN KEY (parent_id) REFERENCES parents(parent_id)
+    -> );
+o  UPDATE tblParents SET email = 'NA';
+o INSERT INTO tblparents (parent_id, parent_name, city, age, annual_income, occupation, email)
+    -> VALUES (3, 'Zufi' ,'Chennai', 39, 240000, 'Teacher', 'zufi@example.com'),
+    -> VALUES (4, 'Mansi' ,'Bangalore', 42, 800000, 'Developer', 'mani@example.com'),
+    -> VALUES (5, 'Manish' ,'Ahmedabad', 47, 200000, 'Trader', 'manish@example.com'),
+    -> VALUES (6, 'Nashra' ,'Mumbai', 52, 700000, 'Phisiologist', 'nash@example.com'),
+    -> VALUES (7, 'Ziya' ,'Chennai', 42, 95000, 'Architecture', 'ziya@example.com'),
+    -> VALUES (8, 'adiba' ,'Kolkatta', 51,  400000, 'C.A', 'adiba@example.com'),
+    -> VALUES (9, 'tamanna' ,'Hyderabad', 38,  900000, 'Model', 'tamanna@example.com'),
+    -> VALUES (10, 'zainab' ,'Aligarh', 40,  1100000, 'Doctor', 'zainu@example.com'),
+    -> VALUES (11, 'Zoya' ,'Mumbai', 50,  1200000, 'Developer', 'zoyu@example.com'),
+    -> VALUES (12, 'Mahesh' ,'Chennai', 60,  1400000, 'Data Analyst', 'mah@example.com');
+o  SELECT COUNT(DISTINCT parent_id)
+    -> from tblparents
+    -> WHERE annual_income > 600000;
+o SELECT *
+    -> from tblparents
+    -> WHERE city IN ('Ahmedabad', 'Delhi', 'Mumbai', 'Chennai', 'Bangalore');
+o  SELECT *
+    -> FROM tblparents
+    -> where annual_income<500000;
+o select * from tblparents
+    -> where (annual_income < 500000 OR age > 45);
+o SELECT * FROM tblparents JOIN student ON tblparents.parent_id = student.parent_id;
